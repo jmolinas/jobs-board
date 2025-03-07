@@ -1,0 +1,9 @@
+name: jobs-app
+recipe: laravel
+config:
+  webroot: public
+  via: nginx
+  cache: redis
+services:
+  node:
+    type: node:20
