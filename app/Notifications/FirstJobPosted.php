@@ -26,7 +26,7 @@ class FirstJobPosted extends Notification
         return (new MailMessage)
             ->subject('New First-Time Job Post')
             ->line('A user has posted a job for the first time.')
-            ->action('Review Job', url('/admin/jobs/' . $this->job->id));
+            ->action('Review Job', url('/job/moderation/' . $this->job->id));
     }
 
     public function toArray($notifiable)

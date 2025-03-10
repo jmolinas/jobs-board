@@ -7,3 +7,6 @@ config:
 services:
   node:
     type: node:20
+    build:
+      - npm install
+      - npm run dev

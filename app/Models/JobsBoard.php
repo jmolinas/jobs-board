@@ -9,7 +9,7 @@ class JobsBoard extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'status', 'location', 'department', 'employment_type'];
+    protected $fillable = ['title', 'description', 'company', 'status', 'location', 'department', 'employment_type', 'schedule'];
 
     public function isPublished()
     {
@@ -19,6 +19,11 @@ class JobsBoard extends Model
     public function isSpam()
     {
         return $this->status === 'spam';
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status',  'published');
     }
 
     /**

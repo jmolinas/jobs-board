@@ -41,7 +41,7 @@ class JobList extends Component
     public function render()
     {
         return view('livewire.job-list', [
-            'jobs' => JobsBoard::latest()->get(),
+            'jobs' => JobsBoard::latest()->published()->get(),
             'positions' => $this->parseJobPositions(),
         ]);
     }

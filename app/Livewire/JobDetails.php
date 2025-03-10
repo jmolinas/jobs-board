@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\JobsBoard;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -12,6 +13,11 @@ class JobDetails extends Component
 
     public function mount($id)
     {
+        $job = JobsBoard::find($id);
+        if ($job) {
+            $this->job = $job->toArray();
+            return;
+        }
         $xmlUrl = 'https://mrge-group-gmbh.jobs.personio.de/xml';
         $xmlContent = file_get_contents($xmlUrl);
 
@@ -29,8 +35,8 @@ class JobDetails extends Component
                     'location' => (string) $position->office,
                     'department' => (string) $position->department,
                     'employment_type' => (string) $position->employmentType,
+                    'company' => (string) $position->subcompany,
                     'description' => trim((string) $position->jobDescriptions->jobDescription->value),
-                    'url' => (string) $position->url,
                 ];
                 return;
             }

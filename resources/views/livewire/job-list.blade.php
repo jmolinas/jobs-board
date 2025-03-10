@@ -6,8 +6,8 @@
                 @foreach ($jobs as $job)
                 <li class="p-2 border-b">
                     <h3 class="font-semibold">{{ $job->title }}</h3>
-                    <p>{{ $job->description }}</p>
-                    <p class="text-sm text-gray-500">Posted by User #{{ $job->user_id }}</p>
+                    <p>{!! $job->description !!}</p>
+                    <a href="{{ route('jobs.details', ['id' => $job->id]) }}" class="btn btn-secondary">View Details</a>
                 </li>
                 @endforeach
                 @foreach ($positions as $position)
